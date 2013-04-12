@@ -1,13 +1,19 @@
 <?php
-// ******************************************************************************
-// A reversible password encryption routine by:
-// Copyright 2003-2007 by A J Marston <http://www.tonymarston.net>
-// Distributed under the GNU General Public Licence
-// Modification: May 2007, M. Kolar <http://mkolar.org>:
-// No need for repeating the first character of scramble strings at the end;
-// instead using the exact inverse function transforming $num2 to $num1.
-// ******************************************************************************
-
+/**
+ * A reversible password encryption routine by:
+ * Copyright 2003-2007 by A J Marston <http://www.tonymarston.net>
+ * Distributed under the GNU General Public Licence
+ * Modification: May 2007, M. Kolar <http://mkolar.org>:
+ * No need for repeating the first character of scramble strings at the end;
+ * instead using the exact inverse function transforming $num2 to $num1.
+ *
+ * @package Extensions
+ * @subpackage Encryption
+ * @author Peter Epp
+ * @copyright Copyright (c) 2009 Peter Epp (http://teknocat.org)
+ * @license GNU Lesser General Public License (http://www.gnu.org/licenses/lgpl.html)
+ * @version 1.0 $Id: extension.php 13982 2011-08-08 18:51:55Z teknocat $
+ */
 class Encryption {
 
 	var $scramble1;     // 1st string of ASCII characters
@@ -20,7 +26,7 @@ class Encryption {
 	// ****************************************************************************
 	// class constructor
 	// ****************************************************************************
-	function Encryption ()
+	public function __construct ()
 	{
 		$this->errors = array();
 
@@ -41,7 +47,7 @@ class Encryption {
 	} // constructor
 
 	// ****************************************************************************
-	function decrypt ($key, $source)
+	public function decrypt ($key, $source)
 		// decrypt string into its original form
 	{
 		$this->errors = array();
@@ -92,7 +98,7 @@ class Encryption {
 	} // decrypt
 
 	// ****************************************************************************
-	function encrypt ($key, $source, $sourcelen = 0)
+	public function encrypt ($key, $source, $sourcelen = 0)
 		// encrypt string into a garbled form
 	{
 		$this->errors = array();
@@ -251,9 +257,4 @@ class Encryption {
 		return $array;
 
 	} // _convertKey
-
-	// ****************************************************************************
-} // end encryption_class
-// ****************************************************************************
-
-?>
+}
